@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Teacher>
+
+<h1>School Teachers</h1>
+<a asp-action="Create" class="btn btn-primary">Create New Teacher</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor( model => model.TeacherName)
+			</th>
+			<th>
+				@Html.DisplayNameFor( model => model.TeacherDoB)
+			</th>
+			<th>
+				@Html.DisplayNameFor( model => model.TeacherDoH)
+			</th>
+			<th>
+				@Html.DisplayNameFor( model => model.TeacherDepartmentName)
+			</th>
+			<th>
+				@Html.DisplayNameFor( model => model.TeacherSalary)
+			</th>
+			<th>
+				CRUD
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach( var item in Model)
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor( modelitem => item.TeacherName)
+			</td>
+			<td>
+				@Html.DisplayFor( modelitem => item.TeacherDoB)
+			</td>
+			<td>
+				@Html.DisplayFor( modelitem => item.TeacherDoH)
+			</td>
+			<td>
+				@Html.DisplayFor( modelitem => item.TeacherDepartmentName)
+			</td>
+			<td>
+				@Html.DisplayFor( modelitem => item.TeacherSalary)
+			</td>
+			<td>
+			@Html.ActionLink("Edit","Edit", new{id = item.TeacherId})
+			@Html.ActionLink("Delete","Delete", new{id = item.TeacherId})
+			</td>
+		</tr>
+		}
+	</tbody>
+</table>

@@ -19,11 +19,13 @@ namespace SchoolSystem.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Teacher Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}")]
         public DateTime TeacherDoB { get; set;}
         
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Teacher Date of Hiring")]
+        [DisplayFormat(DataFormatString ="{0:dd-MMM-yyyy}")]
         public DateTime TeacherDoH { get; set; }
 
         [Required]
