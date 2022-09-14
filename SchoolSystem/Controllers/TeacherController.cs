@@ -14,6 +14,7 @@ namespace SchoolSystem.Controllers
         }
         public IActionResult Create()
         {
+            ViewBag.Departments = this.dbContext.Departments.ToList();
             return View();
         }
         public IActionResult Edit(int id)

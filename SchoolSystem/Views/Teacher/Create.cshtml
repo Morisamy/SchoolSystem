@@ -11,6 +11,8 @@
 </h2>
 <form asp-action=@ViewBag.Title>
 
+	<div asp-validation-summary=All></div>
+
 	<label asp-for="TeacherId" class="control-laabel"></label>
 	<input asp-for="TeacherId" class="form-control" readonly/>
 	
@@ -35,6 +37,7 @@
 			-Result : Didn't work
 		-Change3 : unCommented the Varible "public virtual Department Department"
 			-Result : Differnet Error " Microsoft.Data.SqlClient.SqlException: 'Invalid column name 'DepartmentId'.'"
+		-LastChange : Error Fixed by adding Line#17 to TeacherController
 	*@
 	<label asp-for="TeacherDepartmentId" class="control-label"></label>
 	<select asp-for="TeacherDepartmentId" asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))" class="form-control">
