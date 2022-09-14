@@ -35,12 +35,13 @@ namespace SchoolSystem.Models
 
         [ForeignKey("Department")]
         [Required]
+        //[NotMapped]
         public int TeacherDepartmentId { get; set; }
 
-        [Display(Name ="Department")]
+        [Display(Name = "Department Name")]
         [NotMapped]
-        public string TeacherDepartmentName { get; set; }
+        public string? TeacherDepartmentName { get; set; }
 
-        public virtual Department Department { get; set; }
+        public virtual Department? Department { get; set; }
     }
 }

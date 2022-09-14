@@ -7,13 +7,14 @@ namespace SchoolSystem.Models
     public class Department
     {
         [Key]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name="Department ID")]
-        public int? DepartmentId { get; set; }
+        public int DepartmentId { get; set; }
         [Required]
         [Column(TypeName ="varchar(150)")]
         [Display(Name ="Department Name")]
-        public string? DepartmentName { get; set; }
+        public string DepartmentName { get; set; }
         public bool DepartmentIsDeleted { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace SchoolSystem.Models.HR
         public DbSet<Teacher> Teachers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=.\SQLExpress; initial catalog=SchoolDb; integrated security=SSPI;");
+            optionsBuilder.UseSqlServer(@"data source=.\SQLExpress; initial catalog=SchoolSystemDb; integrated security=SSPI;");
         }
     }
 }

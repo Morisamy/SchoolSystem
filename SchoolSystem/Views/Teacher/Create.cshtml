@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Teacher
 @{
+	//ViewBag.Title = Model != null ? "Edit" : "Create";
+	if (Model is null)
+		ViewData["Title"] = "Create";
+	else
+		ViewData["Title"] = "Edit";
 }
+<h2>
+	@ViewBag.Title a Teacher
+</h2>
+<form asp-action=@ViewBag.Title>
+
+	<label asp-for="TeacherId" class="control-laabel"></label>
+	<input asp-for="TeacherId" class="form-control" readonly/>
+	
+	<label asp-for="TeacherName" class="control-laabel"></label>
+	<input asp-for="TeacherName" class="form-control" />
+
+	<label asp-for="TeacherDoB" class="control-laabel"></label>
+	<input asp-for="TeacherDoB" class="form-control" />
+
+	<label asp-for="TeacherDoH" class="control-laabel"></label>
+	<input asp-for="TeacherDoH" class="form-control" />
+
+	<label asp-for="TeacherSalary" class="control-laabel"></label>
+	<input asp-for="TeacherSalary" class="form-control" />
+	@*
+		Teachers' Departments Dropdown Menu is Working fine with Edit Button
+		But, is Showing "ArgumentNullException: Value cannot be null. (Parameter 'items')" Error while Creating new Teacher
+
+		-Change#1 : Department id is altered to accept null from both database and models
+			-Result : Didn't work
+		-Change2: Dropped the database and created it again
+			-Result : Didn't work
+		-Change3 : unCommented the Varible "public virtual Department Department"
+			-Result : Differnet Error " Microsoft.Data.SqlClient.SqlException: 'Invalid column name 'DepartmentId'.'"
+	*@
+	<label asp-for="TeacherDepartmentId" class="control-label"></label>
+	<select asp-for="TeacherDepartmentId" asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))" class="form-control">
+		<option value"">Select Department</option>
+	</select>
+	
+	<input type="submit" value="Save" class="btn btn-primary" />
+	<a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

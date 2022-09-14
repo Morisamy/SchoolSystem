@@ -16,5 +16,11 @@ namespace SchoolSystem.Controllers
         {
             return View();
         }
+        public IActionResult Edit(int id)
+        {
+            Teacher teacher = this.dbContext.Teachers.Where(e => e.TeacherId == id).FirstOrDefault();
+            ViewBag.Departments = this.dbContext.Departments.ToList();
+            return View("Create",teacher);
+        }
     }
 }
