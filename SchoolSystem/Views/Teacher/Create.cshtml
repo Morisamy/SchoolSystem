@@ -12,10 +12,11 @@
 <form asp-action=@ViewBag.Title>
 
 	<div asp-validation-summary=All></div>
-
+	@*
+		ID is only used on Backed shouldn't appear on frontend
 	<label asp-for="TeacherId" class="control-laabel"></label>
 	<input asp-for="TeacherId" class="form-control" readonly/>
-	
+	*@
 	<label asp-for="TeacherName" class="control-laabel"></label>
 	<input asp-for="TeacherName" class="form-control" />
 
