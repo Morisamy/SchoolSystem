@@ -1,12 +1,22 @@
 ﻿@model IEnumerable<Teacher>
 
 <h1>School Teachers</h1>
-<a asp-action="Create" class="btn btn-primary">Create New Teacher</a>
+
+@using (Html.BeginForm())
+{
+	<div class="input-group">
+		@Html.TextBox("SearchByName",null,new { @class="form-control", @placeholder="Search by Name...."})
+		<inupt type="submit" value="Search" class="btn btn-outline-success">Search</inupt>
+		<a asp-action="Create" class="btn btn-outline-primary">Create Teacher</a>
+	</div>
+		
+}
+
 <table class="table">
 	<thead>
 		<tr>
 			<th>
-				@Html.DisplayNameFor( model => model.TeacherName)
+				@Html.ActionLink("Teacher Name","Index",new {sortField="TeacherName", currentSortField=ViewBag.SortField, sortDirection=ViewBag.SortDiection})
 			</th>
 			<th>
 				@Html.DisplayNameFor( model => model.TeacherDoB)
@@ -18,7 +28,7 @@
 				@Html.DisplayNameFor( model => model.TeacherDepartmentName)
 			</th>
 			<th>
-				@Html.DisplayNameFor( model => model.TeacherSalary)
+				@Html.ActionLink("Teacher Salary","Index",new {sortField="TeacherSalary", currentSortField=ViewBag.SortField, sortDirection=ViewBag.SortDiection})
 			</th>
 			<th>
 				CRUD
@@ -46,7 +56,7 @@
 			</td>
 			<td>
 			@Html.ActionLink("Edit","Edit", new{id = item.TeacherId})
-			@Html.ActionLink("Delete","Delete", new{id = item.TeacherId})
+			@Html.ActionLink("Delete","Delete", new{id = item.TeacherId}, new { onclick = "return confirm ('Are You Sure To Delete?');"})
 			</td>
 		</tr>
 		}
